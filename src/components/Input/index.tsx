@@ -5,7 +5,7 @@ import { Container, TextInput, Icon } from './styles'
 
 interface InputProps extends TextInputProps {
   name: string;
-  icon: string;
+  icon?: string;
 }
 
 const Input: React.FC<InputProps> = ({ name, icon, ...rest }) => {

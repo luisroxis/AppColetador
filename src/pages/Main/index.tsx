@@ -2,10 +2,21 @@ import React from 'react'
 import { Text, View, KeyboardAvoidingView, Platform } from 'react-native'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
+import { useNavigation } from '@react-navigation/native'
 
-import { Container, PPaciente, CardPaciente } from './styles'
+import {
+  Container,
+  PPaciente,
+  CardPaciente,
+  Card,
+  CardTitle,
+  CardContent,
+  CardDoc,
+  CardExame
+} from './styles'
 
 const Main: React.FC = () => {
+  const navigation = useNavigation()
   return (
     <>
     <KeyboardAvoidingView
@@ -28,20 +39,14 @@ const Main: React.FC = () => {
           >Pesquisar</Button>
           </PPaciente>
         <CardPaciente>
-          <Button
-            style={{width: 100, backgroundColor: '#569c5c'}}
-            onPress={()=>{
-              console.log('Detalhes do Paciente')
-            }}
-          >Detalhes</Button>
-          <Button
-            style={{width: 100, backgroundColor: '#4363f1'}}
-            onPress={()=>{
-              console.log('Coletar Exame')
-            }}
-          >Coleta</Button>
+          <Card onPress={()=>navigation.navigate('Paciente')}>
+            <CardTitle>NomePaciente</CardTitle>
+            <CardContent>
+              <CardExame>ID Exame</CardExame>
+              <CardDoc>xxx.xxx.xxx-xx</CardDoc>
+            </CardContent>
+          </Card>
         </CardPaciente>
-
       </Container>
       </KeyboardAvoidingView>
     </>

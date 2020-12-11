@@ -1,5 +1,6 @@
 import React from 'react'
 import { ScrollView, Image, View, KeyboardAvoidingView, Platform } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 import { Container, LogonText } from './styles'
 import Input from '../../components/Input'
@@ -7,6 +8,9 @@ import Button from '../../components/Button'
 import Logo from '../../assets/logo.png'
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation()
+
+
   return (
     <>
       <KeyboardAvoidingView
@@ -37,9 +41,7 @@ const SignIn: React.FC = () => {
           />
 
           <Button
-            onPress={()=>{
-              console.log('Login')
-            }}
+            onPress={() => navigation.navigate('Main')}
           >Entrar</Button>
         </Container>
         </ScrollView>
