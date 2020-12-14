@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, SafeAreaView } from 'react-native'
+import { RadioButton, Text } from 'react-native-paper';
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import { useNavigation } from '@react-navigation/native'
@@ -12,21 +13,25 @@ import {
   PacienteDetail,
   Raca,
   SexoContainer,
+  SwitchSexo,
   SwitchContainer,
   SwitchContainerRaca,
+  SwitchContainerPesquisa,
+  SwitchPesquisa,
+  Pesquisa,
   Switch,
   TitleSwitch,
   TextSwitch,
-  Pesquisa,
-  Sobre,
-  Saude
+  Sobre
 } from './styles'
 
 
 const Paciente: React.FC = () => {
   const navigation = useNavigation()
+  const [value, setValue] = React.useState('masculino')
   return (
       <>
+      <SafeAreaView>
       <ScrollView>
         <PacienteDetail>
           <Title>Nome Paciente</Title>
@@ -34,83 +39,105 @@ const Paciente: React.FC = () => {
           <Email>ze@ze.com.br</Email>
         </PacienteDetail>
 
+
+          <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
           <SexoContainer>
-            <SwitchContainer>
-              <TextSwitch>Masculino</TextSwitch>
-              <Switch />
+              <Text>Masculino</Text>
+              <RadioButton value="masculino" />
+              <Text>Feminino</Text>
+              <RadioButton value="feminino" />
+            </SexoContainer>
+          </RadioButton.Group>
 
-              <TextSwitch>Feminino</TextSwitch>
-              <Switch />
-            </SwitchContainer>
-          </SexoContainer>
+
           <Raca>
-            <SwitchContainerRaca>
-              <TextSwitch >Amarela</TextSwitch>
-              <Switch />
-
-              <TextSwitch >Branca</TextSwitch>
-              <Switch />
-
-              <TextSwitch >Indigena</TextSwitch>
-              <Switch />
-
-              <TextSwitch >Negra</TextSwitch>
-              <Switch />
-
-              <TextSwitch >Parda</TextSwitch>
-              <Switch />
-            </SwitchContainerRaca>
+            <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
+              <SwitchContainerRaca>
+                  <Text>Amarela</Text>
+                  <RadioButton value="amarela" />
+                  <Text>Branca</Text>
+                  <RadioButton value="branca" />
+                  <Text>Indigena</Text>
+                  <RadioButton value="indigena" />
+                  <Text>Negra</Text>
+                  <RadioButton value="negra" />
+                  <Text>Parda</Text>
+                  <RadioButton value="parda" />
+              </SwitchContainerRaca>
+            </RadioButton.Group>
           </Raca>
 
-        <Pesquisa>
-          <Sobre>
-            <TextSwitch style={{fontSize:10}} >Profissional de Saude</TextSwitch>
-            <Switch />
-            <TextSwitch >Profissional de Segurança</TextSwitch>
-            <Switch />
-          </Sobre>
+          <Pesquisa>
+            <Sobre>
+              <View>
+                <TextSwitch >Profissional de Saúde</TextSwitch>
+                <Switch />
+              </View>
+              <View>
+                <TextSwitch >Profissional de Segurança</TextSwitch>
+                <Switch />
+              </View>
+              </Sobre>
+          </Pesquisa>
 
-          <Saude>
-            <Title>Saude do Paciente</Title>
+          <SwitchPesquisa>
+              <Title>Saude do Paciente</Title>
+              <SwitchContainerPesquisa>
+                <TextSwitch >Obesidade</TextSwitch>
+                <Switch />
+              </SwitchContainerPesquisa>
 
-            <TextSwitch >Doença Cardiaca</TextSwitch>
-            <Switch />
-            <Input name="doencacardica" placeholder="Doença Cardiaca" />
+              <SwitchContainerPesquisa>
+                <TextSwitch >Diabetes</TextSwitch>
+                <Switch />
+              </SwitchContainerPesquisa>
 
-            <TextSwitch >Doença Cardiaca</TextSwitch>
-            <Switch />
-            <Input name="doencacardica" placeholder="Doença Cardiaca" />
+              <SwitchContainerPesquisa>
+                <TextSwitch >Imunossupressão</TextSwitch>
+                <Switch />
+              </SwitchContainerPesquisa>
 
-            <TextSwitch >Doença Cardiaca</TextSwitch>
-            <Switch />
-            <Input name="doencacardica" placeholder="Doença Cardiaca" />
+              <SwitchContainerPesquisa>
+                <TextSwitch >Doença Cardiaca Cronica</TextSwitch>
+                <Switch />
+              </SwitchContainerPesquisa>
+              <Input name="doencacardica" placeholder="Doença Cardiaca" />
 
-            <TextSwitch >Doença Cardiaca</TextSwitch>
-            <Switch />
-            <Input name="doencacardica" placeholder="Doença Cardiaca" />
+              <SwitchContainerPesquisa>
+                <TextSwitch >Doença Respiratória Cronica</TextSwitch>
+                <Switch />
+              </SwitchContainerPesquisa>
+              <Input name="doencarespiratoria" placeholder="Doença Respiratória" />
 
-            <TextSwitch >Doença Cardiaca</TextSwitch>
-            <Switch />
-            <Input name="doencacardica" placeholder="Doença Cardiaca" />
+              <SwitchContainerPesquisa>
+                <TextSwitch >Doença Cromossomica Cronica</TextSwitch>
+                <Switch />
+              </SwitchContainerPesquisa>
+              <Input name="doencacromossomica" placeholder="Doença Cromossomica" />
 
-            <TextSwitch >Doença Cardiaca</TextSwitch>
-            <Switch />
-            <Input name="doencacardica" placeholder="Doença Cardiaca" />
+              <SwitchContainerPesquisa>
+                <TextSwitch >Doença Renal Cronica</TextSwitch>
+                <Switch />
+              </SwitchContainerPesquisa>
+              <Input name="doencarenal" placeholder="Doença Renal" />
 
-            <TextSwitch >Doença Cardiaca</TextSwitch>
-            <Switch />
-            <Input name="doencacardica" placeholder="Doença Cardiaca" />
+              <SwitchContainerPesquisa>
+                <TextSwitch >Gestante de Risco</TextSwitch>
+                <Switch />
+              </SwitchContainerPesquisa>
+              <Input name="tempogestacao" placeholder="Tempo de Gestação" />
 
-          </Saude>
-        </Pesquisa>
-        <View style={{alignItems:'center', justifyContent:'center', marginBottom: 25}}>
-          <Button
-            onPress={() =>navigation.navigate('Coletar')}
-          >Coletar</Button>
-        </View>
 
+          </SwitchPesquisa>
+
+          <View style={{alignItems:'center', justifyContent:'center', marginBottom: 25}}>
+            <Button
+              onPress={() =>navigation.navigate('Coletar')}
+            >Coletar</Button>
+          </View>
 
         </ScrollView>
+        </SafeAreaView>
       </>
 
 

@@ -7,6 +7,7 @@ import Main from '../pages/Main'
 import Paciente from '../pages/Paciente'
 import Exame from '../pages/Exame'
 import Coletar from '../pages/Coletar'
+import Foto from '../pages/Foto'
 
 const AuthRoutes: React.FC = () => (
   <Auth.Navigator
@@ -14,13 +15,14 @@ const AuthRoutes: React.FC = () => (
       headerShown: false,
       cardStyle: { backgroundColor: '#4A4654'}
     }}
-    initialRouteName='Paciente'
+
   >
     <Auth.Screen name="SignIn" component={SignIn}/>
     <Auth.Screen name="Main" component={Main} />
     <Auth.Screen name="Paciente" component={Paciente} />
     <Auth.Screen name="Exame" component={Exame} />
     <Auth.Screen name="Coletar" component={Coletar} />
+    <Auth.Screen name="Foto" component={Foto} />
   </Auth.Navigator>
 )
 

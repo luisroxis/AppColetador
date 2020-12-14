@@ -1,5 +1,6 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import {
   Container,
   ContainerColeta,
@@ -11,6 +12,7 @@ import Input from '../../components/Input'
 import Button from '../../components/Button'
 
 const Coletar: React.FC = () => {
+  const navigation = useNavigation()
   return (
     <>
       <ScrollView>
@@ -70,9 +72,7 @@ const Coletar: React.FC = () => {
         </ContainerColeta>
         <View style={{alignItems:'center', justifyContent:'center', marginBottom: 25}}>
         <Button
-            onPress={() =>{
-              console.log('Foto Exame')
-            }}
+            onPress={() =>navigation.navigate('Foto')}
           >Foto Exame</Button>
 
         </View>
